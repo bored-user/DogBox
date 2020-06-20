@@ -1,0 +1,12 @@
+<html>
+{{> partials/errors}}
+<body>
+
+    <div>
+        <h2>Erro 500</h2>
+        <p>Ocorreu um erro interno no servidor ao tentar acessar o arquivo requisitado :(</p>
+
+        <button onclick="window.location.href = '/'">Clique aqui para voltar para a p&aacute;gina inicial</button>
+    </div>
+</body>
+</html>

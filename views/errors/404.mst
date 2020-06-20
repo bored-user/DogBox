@@ -1,0 +1,12 @@
+<html>
+{{> partials/errors}}
+<body>
+
+    <div>
+        <h2>Erro 404</h2>
+        <p>Voc&ecirc; est&aacute; procurando uma p&aacute;gina que n&atilde;o existe, hein?!<br>Que doguinhagem.</p>
+
+        <button onclick="window.location.href = '/'">Clique aqui para voltar para a p&aacute;gina inicial</button>
+    </div>
+</body>
+</html>
