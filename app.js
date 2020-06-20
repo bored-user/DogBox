@@ -7,7 +7,7 @@ const express = require('express'),
 
 const app = express();
 app.use('/', index);
-app.use('/browse/shows /browse/movies /browse/musics /browse/books', browse);
+app.use('/browse', browse);
 app.use('/watch', watch);
 app.use('/assets', files);
 
