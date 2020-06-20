@@ -50,16 +50,21 @@
                         }
                     });
                 });
+
+                $('div').eq(0).html() === 'movies' ? $('header input').css('color', 'black') : null;
             </script>
         </div>
     </header>
     <div class='root'>
     {{#files}}
-        <a class='media' href='/watch/{{type}}/{{name}}'>
+        <a class='media' href='{{path}}'>
             <div>
                 <h2>{{name}}</h2>
             </div>
         </a>
+    {{/files}}
+    {{^files}}
+        <h2>N&atilde;o h&aacute; conte&uacute;do para ser exibido!</h2>
     {{/files}}
     </div>
 </body>
