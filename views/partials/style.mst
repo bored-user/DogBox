@@ -1,0 +1,46 @@
+<style>
+    html {
+        --accent: red;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .root {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        grid-template-rows: 2fr 2fr;
+        height: 100%;
+        width: 100%;
+        font-family: 'Arial';
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .media {
+        margin: 5px;
+        padding: 10px;
+        border: 2px solid var(--accent);
+        border-radius: 3px;
+        transition: all 250ms;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: inherit;
+        text-decoration: none;
+        outline: none;
+    }
+
+    .media:hover {
+        background-color: var(--accent);
+        color: white;
+        margin: 0;
+        padding: 15px;
+    }
+</style>

@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: black;
+            }
+
+            {{tag}} {
+                {{> partials/center}}
+            }
+        </style>
+    </head>
+
+    <body>
+        <{{tag}} controls preload="auto">
+            <source src="{{uri}}">
+        </{{tag}}>
+    </body>
+</html>

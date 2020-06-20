@@ -1,0 +1,28 @@
+<html>
+<head>
+    {{>  partials/style}}
+</head>
+
+<body class='root'>
+    <a href='/browse/shows' class='media'>
+        <div>
+            <h2>S&eacute;ries</h2>
+        </div>
+    </a>
+    <a href='/browse/movies' class='media'>
+        <div>
+            <h2>Filmes</h2>
+        </div>
+    </a>
+    <a href='/browse/musics' class='media'>
+        <div>
+            <h2>M&uacute;sicas</h2>
+        </div>
+    </a>
+    <a href='/browse/books' class='media'>
+        <div>
+            <h2>Livros</h2>
+        </div>
+    </a>
+</body>
+</html>
