@@ -22,7 +22,7 @@ router.get('/browse/:type*', ({ originalUrl, params: { type } }, res) => {
 
         try {
             for (file of result) {
-                if (file.includes('vtt'))   continue;
+                if (file.includes('.vtt')) continue;
 
                 const stats = fs.statSync(`${path}/${file}`);
                 if (stats === undefined || err) {
@@ -30,26 +30,22 @@ router.get('/browse/:type*', ({ originalUrl, params: { type } }, res) => {
                 }
 
                 if (stats.isDirectory()) {
-                    const temp = {
+                    const contents = fs.readdirSync(`${path}/${file}`),
+                        png = contents.indexOf('cover.png'),
+                        jpg = contents.indexOf('cover.jpg');
+
+                    files.push({
                         path: `${originalUrl}/${file}`,
-                        name: `> ${file}`
-                    }
-
-                    if (fs.existsSync(`${path}/${file}/cover.jpg`)) {
-                        files.push(Object.assign(temp, { cover: `/assets/media/${originalUrl.replace('/browse/', '')}/${file}/cover.jpg`}));
-                    } else if (fs.existsSync(`${path}/${file}/cover.png`)) {
-                        files.push(Object.assign(temp, { cover: `/assets/media/${originalUrl.replace('/browse/', '')}/${file}/cover.png`}));
-                    } else {
-                        files.push(Object.assign(temp, { cover: false}));
-                    }
+                        name: `> ${file}`,
+                        cover: png > -1 ? `/assets/media/${originalUrl.replace('/browse/', '')}/${file}/cover.png` : jpg > -1 ? `/assets/media/${originalUrl.replace('/browse/', '')}/${file}/cover.jpg` : false
+                    });
                 } else {
-                    let sub = false,
-                        path = `/assets/media/${originalUrl.replace('/browse/', '')}/${file.split('.')[0]}.vtt`;
-
-                    if (fs.existsSync(global.root + path))
-                        sub = path;
-
-                    files.push({ path: `${originalUrl.replace('/browse/', '/watch/')}/${file}`, name: file, sub: sub });
+                    const path = `/assets/media/${originalUrl.replace('/browse/', '')}/${file.split('.')[0]}.vtt`;
+                    files.push({
+                        path: `${originalUrl.replace('/browse/', '/watch/')}/${file}`,
+                        name: file,
+                        sub: fs.existsSync(global.root + path) ? path : false
+                    });
                 }
             };
         } catch (e) {

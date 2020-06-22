@@ -79,14 +79,11 @@
     </header>
     <div class='root'>
     {{#files}}
+        <a class='media' href='{{path}}' id='sub'>
         {{#sub}}
-            <a class='media' href='{{path}}' id='sub'>
             <script>
-                $('#sub').attr('href', $('#sub').attr('href') + `?sub=${encodeURIComponent("{{sub}}".replace(new RegExp('&#x2F;', 'g'), '/'))}`);
+                $('.media:last').attr('href', $('#sub').attr('href') + `?sub=${encodeURIComponent("{{sub}}".replace(new RegExp('&#x2F;', 'g'), '/'))}`);
             </script>
-        {{/sub}}
-        {{^sub}}
-            <a class='media' href='{{path}}'>
         {{/sub}}
             <div>
                 <h2>{{name}}</h2>

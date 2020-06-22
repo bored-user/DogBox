@@ -22,7 +22,7 @@
         <{{tag}} controls preload='auto'>
             <source src="{{uri}}">
             {{#sub}}
-                <track label='Portugues' kind='subtitles' srclang='pt' src='{{sub}}'>
+                <track label='Legenda 1' kind='subtitles' srclang='pt' src='{{sub}}'>
             {{/sub}}
         </{{tag}}>
     </body>
