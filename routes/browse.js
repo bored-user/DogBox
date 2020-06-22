@@ -54,6 +54,7 @@ router.get('/browse/:type*', ({ originalUrl, params: { type } }, res) => {
             };
         } catch (e) {
             res.render('errors/404');
+            return;
         }
 
         res.render('browse', { files: files, type: type, accent: accent });
