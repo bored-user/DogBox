@@ -4,7 +4,6 @@ const router = require('./_router'),
 router.get('/watch/:type/:file*', ({ originalUrl, params: { type, file }, query }, res) => {
     originalUrl = originalUrl.split('?')[0];
     const path = `${global.root}/assets/media/${originalUrl.replace('/watch/', '')}`;
-    console.log(path);
 
     fs.stat(path, (err, stats) => {
         if (stats === undefined || err)
