@@ -1,16 +1,9 @@
 const express = require('express'),
     mustache = require('mustache-express'),
-    index = require('./routes/index'),
-    browse = require('./routes/browse'),
-    watch = require('./routes/watch'),
-    files = require('./routes/files');
+    router = require('./routes/index');
 
 const app = express();
-app.use('/', index);
-app.use('/browse', browse);
-app.use('/watch', watch);
-app.use('/assets', files);
-
+app.use('/', router);
 app.engine('mst', mustache());
 app.set('view engine', 'mst');
 app.set('views', `${__dirname}/views`);

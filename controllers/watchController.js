@@ -1,9 +1,7 @@
-const router = require('./_router'),
-    fs = require('fs');
-
-router.get('/watch/:type/:file*', ({ originalUrl, params: { type, file }, query }, res) => {
+module.exports = ({ originalUrl, params: { type, file }, query }, res) => {
     originalUrl = originalUrl.split('?')[0];
-    const path = `${global.root}/assets/media/${originalUrl.replace('/watch/', '')}`;
+    const fs = require('fs'),
+        path = `${global.root}/assets/media/${originalUrl.replace('/watch/', '')}`;
 
     fs.stat(path, (err, stats) => {
         if (stats === undefined || err)
@@ -16,6 +14,4 @@ router.get('/watch/:type/:file*', ({ originalUrl, params: { type, file }, query 
         } else
             res.render('watch', { sub: query.sub || false, uri: `/assets/media/${originalUrl.replace('/watch/', '')}`, tag: type === 'shows' || type === 'movies' ? 'video' : 'audio' })
     });
-});
-
-module.exports = router;
+}

@@ -1,8 +1,6 @@
-const router = require('./_router'),
-    fs = require('fs');
-
-router.get('/browse/:type*', ({ originalUrl, params: { type } }, res) => {
-    const path = `${global.root}/assets/media/${originalUrl.replace('/browse/', '')}`,
+module.exports = ({ originalUrl, params: { type } }, res) => {
+    const fs = require('fs'),
+        path = `${global.root}/assets/media/${originalUrl.replace('/browse/', '')}`,
         accent = originalUrl.includes('/browse/shows') ? 'purple' : originalUrl.includes('/browse/movies') ? 'yellow' : originalUrl.includes('/browse/books') ? 'lightblue' : 'lightgreen'
 
     fs.readdir(path, (err, result) => {
@@ -55,6 +53,4 @@ router.get('/browse/:type*', ({ originalUrl, params: { type } }, res) => {
 
         res.render('browse', { files: files, type: type, accent: accent });
     });
-});
-
-module.exports = router;
+}
